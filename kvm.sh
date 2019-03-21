@@ -561,7 +561,7 @@ log_file(){
 	echo "   - OpenVPN     : TCP 1194 UDP 587 SSL 1443"  | tee -a log-install.txt
 	echo "   - OpenSSH     : 22, 143"  | tee -a log-install.txt
 	echo "   - OpenSSH-SSL : 444"  | tee -a log-install.txt
-	echo "   - Dropbear    : 80, 54793"  | tee -a log-install.txt
+	echo "   - Dropbear    : 80, 8443"  | tee -a log-install.txt
 	echo "   - Dropbear-SSL: 443"  | tee -a log-install.txt
 	echo "   - Squid Proxy : 8080, 3128 (public u/p= GLOBALSSH/READYSSH)"  | tee -a log-install.txt
 	echo "   - Squid-SSL   : 8000 (public u/p= GLOBALSSH/READYSSH)"  | tee -a log-install.txt
