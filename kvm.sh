@@ -58,7 +58,7 @@ install_package_dependency(){
 }
 
 change_dns_resolver(){
-	wget -O /etc/issue.net "https://github.com/malikshi/IPTUNNELS/raw/master/config/issue.net"
+	wget -O /etc/issue.net "https://github.com/Trustdee/IPTUNNELS/raw/master/config/issue.net"
 	echo "nameserver 1.1.1.1" >> /etc/resolv.conf
 	echo "nameserver 1.0.0.1" >> /etc/resolv.conf
 	sed -i '$ i\echo "nameserver 1.1.1.1" >> /etc/resolv.conf' /etc/rc.local
@@ -134,7 +134,7 @@ Restart=on-failure
 WantedBy=multi-user.target
 END8
 systemctl enable shadowsocks.service
-wget -O /etc/init.d/shadowsocks "https://github.com/malikshi/IPTUNNELS/raw/master/config/shadowsocks"
+wget -O /etc/init.d/shadowsocks "https://github.com/Trustdee/IPTUNNELS/raw/master/config/shadowsocks"
 chmod +x /etc/init.d/shadowsocks
 }
 
@@ -154,7 +154,7 @@ install_ovpn(){
 	export PASS=1
 	./openvpn-install.sh
 	cd /etc/openvpn/
-	wget -O /etc/openvpn/openvpn-auth-pam.so https://github.com/malikshi/IPTUNNELS/raw/master/package/openvpn-auth-pam.so
+	wget -O /etc/openvpn/openvpn-auth-pam.so https://github.com/Trustdee/IPTUNNELS/raw/master/package/openvpn-auth-pam.so
 	echo "plugin /etc/openvpn/openvpn-auth-pam.so /etc/pam.d/login" >> /etc/openvpn/server.conf
 	echo "verify-client-cert none" >> /etc/openvpn/server.conf
 	echo "username-as-common-name" >> /etc/openvpn/server.conf
@@ -215,7 +215,7 @@ rcvbuf 2000000' >> /etc/openvpn/client-template.txt
 }
 
 install_screenfetch(){
-	wget -O /usr/bin/screenfetch "https://github.com/malikshi/IPTUNNELS/raw/master/config/screenfetch"
+	wget -O /usr/bin/screenfetch "https://github.com/Trustdee/IPTUNNELS/raw/master/config/screenfetch"
 	chmod +x /usr/bin/screenfetch
 	echo "clear" >> .profile
 	echo "screenfetch" >> .profile
@@ -283,7 +283,7 @@ install_ssh_banner(){
 
 install_dropbear(){
 	cd
-	wget -O /etc/default/dropbear "https://github.com/malikshi/IPTUNNELS/raw/master/config/dropbear"
+	wget -O /etc/default/dropbear "https://github.com/Trustdee/IPTUNNELS/raw/master/config/dropbear"
 	echo "/bin/false" >> /etc/shells
 	echo "/usr/sbin/nologin" >> /etc/shells
 	sed -i 's/obscure/minlen=5/g' /etc/pam.d/common-password
@@ -304,7 +304,7 @@ install_dropbear(){
 
 install_stunnel4(){
 	sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
-	wget -O /etc/stunnel/stunnel.conf "https://github.com/malikshi/IPTUNNELS/raw/master/config/stunnel.conf"
+	wget -O /etc/stunnel/stunnel.conf "https://github.com/Trustdee/IPTUNNELS/raw/master/config/stunnel.conf"
 	sed -i $MYIP2 /etc/stunnel/stunnel.conf
 	#setting cert
 	country=SG
@@ -333,7 +333,7 @@ install_squid3(){
 	touch /etc/squid/passwd
 	/bin/rm -f /etc/squid/squid.conf
 	/usr/bin/touch /etc/squid/blacklist.acl
-	/usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://github.com/malikshi/IPTUNNELS/raw/master/config/squid.conf
+	/usr/bin/wget --no-check-certificate -O /etc/squid/squid.conf https://github.com/Trustdee/IPTUNNELS/raw/master/config/squid.conf
 	service squid restart
 	update-rc.d squid defaults
 	#create user default 
@@ -457,7 +457,7 @@ END3
 
 install_premiumscript(){
 	cd /usr/local/bin
-	wget -O premium-script.tar.gz "https://github.com/malikshi/IPTUNNELS/raw/master/package/premium-script.tar.gz"
+	wget -O premium-script.tar.gz "https://github.com/Trustdee/IPTUNNELS/raw/master/package/premium-script.tar.gz"
 	tar -xvf premium-script.tar.gz
 	rm -f premium-script.tar.gz
 	cp /usr/local/bin/premium-script /usr/local/bin/menu
@@ -530,11 +530,11 @@ config_apache2(){
 }
 
 install_bbr(){
-	curl -sSL https://github.com/malikshi/IPTUNNELS/raw/master/package/bbr.sh | bash
+	curl -sSL https://github.com/Trustdee/IPTUNNELS/raw/master/package/bbr.sh | bash
 }
 
 Install_monit_shadowsocks(){
-	wget -O /etc/monit/monitrc "https://github.com/malikshi/IPTUNNELS/raw/master/config/monitrc"
+	wget -O /etc/monit/monitrc "https://github.com/Trustdee/IPTUNNELS/raw/master/config/monitrc"
 	monit reload all
 	systemctl enable monit
 }
